@@ -2,64 +2,46 @@ import edu.cymbal.graphics.PainterAPI;
 
 import java.util.ArrayList;
 
+/* TODO: determine if methods need to return 'currentAngle'
+ *       - it might be best to have every draw method return the 'painter'
+ *           to a certain angle
+ *           turnLeft(90) from the original +x axis to the +y axis
+ */
 
+// draws plants/rocks from Generate.java - along with fish
 public class Draw {
+
     /**
-     * @param initial Initial sequence
-     * // @param lSystem For every occurrence of axiom & rule - axiom first, then rule (index 0 = axiom, index 1 = rule, ...)
-     *                Starting at index 0, all axioms are at an even index - 0, 2, 4, 6, ...
-     *                Starting at index 1, all rules are at an odd index - 1, 3, 5, 7, ...
-     *
-     * @param time Number of iteration steps
+     * @param currentAngle current orientation of {@code painter}
+     * @param branchLength desired length of each branch
+     * @param time number of iterations/steps passed to {@link Generate#generatePlant}
+     * @param xPos1 desired starting x position
+     * @param yPos1 desired starting y position
+     * @param painter a {@link PainterAPI} object
+     * @return the new {@code currentAngle} of {@code painter}
      */
-    // ArrayList<String> lSystem
-    public static String generatePlant(String initial, int time) {
-        //String current = "-x";
+    public static double drawPlant(double currentAngle, double branchLength, int time, double xPos1,
+                                   double yPos1, PainterAPI painter) {
 
-        for (int i = 0; i < time; i++) {
-            // the linter kept telling me to use StringBuilder
-            StringBuilder newInstructions = new StringBuilder();
-            for (char character : initial.toCharArray()) {
-                if (character == 'x') {
-                    newInstructions.append("f+[[x]-x]-f[-fx]+x");
-
-                } else if (character == 'f') {
-                    newInstructions.append("ff");
-                } else {
-                    newInstructions.append(character);
-                }
-            }
-            //current = newInstructions;
-            initial = newInstructions.toString();
-            //System.out.println(output);
-        }
-        //return current;
-
-        return initial;
-    }
-
-    public static double drawPlant(double currentAngle, double branchLength, int time, double xPos1, double yPos1, PainterAPI painter) {
-        /* vars: xf
-        f = draw forward
-        - = turn right 25 degrees
-        + = turn left 25 degrees
-        x = nothing
-        [ = save current pos and angle
-        ] = position and angle reset
-        every [ comes before ]
-        constants: x - []
-        start: -x
-        rules: (x -> f+[[x]-x]-f[-fx]+x), (f -> ff) */
+        // TODO: make it better
+        // moves painter into correct position
         painter.liftPen();
         painter.moveTo(xPos1, yPos1);
         painter.lowerPen();
+
+        // creates and adds initial values to the array
         ArrayList<Integer> positions = new ArrayList<>();
         positions.add((int) painter.getX());
         positions.add((int) painter.getY());
         positions.add((int) currentAngle);
+
+        // TODO: remove placeholders
+        // placeholder for 'generatePlant'
         String initial = "-x";
-        String current = generatePlant(initial, time);
-        ArrayList<String> test = new ArrayList<>();
+        // generates plant
+        String current = Generate.generatePlant(initial, time);
+
+        // iterates through the string given by 'generatePlant' and draws the result
         for (char character : current.toCharArray()) {
             if (character == '-') {
                 painter.turnRight(25);
@@ -72,28 +54,49 @@ public class Draw {
                 positions.add((int) painter.getY());
                 positions.add((int) currentAngle);
             } else if (character == ']') {
-                // x, y, angle
+                // 'positions'
+                // ... x, y, angle
                 positions.removeLast();
-                // angle, x, y
+                // ... angle, x, y
                 painter.liftPen();
                 painter.moveTo(painter.getX(), positions.getLast());
                 positions.removeLast();
-                // y, angle, x
+                // ... y, angle, x
                 painter.moveTo(positions.getLast(), painter.getY());
                 positions.removeLast();
-                // x, y, angle
+                // ... x, y, angle
+
                 if (positions.getLast() - currentAngle > 0) {
                     painter.turnLeft(positions.getLast() - currentAngle);
                 } else {
+                    // 'Math.abs' isn't necessary if you change this to 'painter.turnLeft'
                     painter.turnRight(Math.abs(positions.getLast() - currentAngle));
                 }
+                // sets 'currentAngle' to be returned
                 currentAngle = positions.getLast();
                 painter.lowerPen();
-                //System.out.println(positions);
             } else if (character == 'f') {
                 painter.forward(branchLength);
             }
         }
         return currentAngle;
+    }
+
+    // TODO: implement this method
+    public static double drawRocks() {
+        // to keep track of 'currentAngle'
+        return 0.0;
+    }
+
+    // TODO: implement this method
+    public static double drawFish() {
+        // to keep track of 'currentAngle'
+        return 0.0;
+    }
+
+    // TODO: implement this method
+    public static double drawBubbles() {
+        // to keep track of 'currentAngle'
+        return 0.0;
     }
 }
