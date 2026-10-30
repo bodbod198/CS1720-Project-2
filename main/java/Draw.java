@@ -82,21 +82,67 @@ public class Draw {
         return currentAngle;
     }
 
-    // TODO: implement this method
-    public static double drawRocks() {
-        // to keep track of 'currentAngle'
+    /**
+     *
+     * @param currentAngle current angle of the painter
+     * @param time for animation
+     * @param painter painter object
+     * @return the new current angle of 'painter'
+     */
+    public static double drawRocks(double currentAngle, int time, PainterAPI painter) {
+        // draws rocks
+        // painter.liftPen();
+        // painter.moveTo(0, 0);
+        // painter.lowerPen();
+        // draws stuff here
         return 0.0;
     }
 
-    // TODO: implement this method
-    public static double drawFish() {
-        // to keep track of 'currentAngle'
+    /**
+     *
+     * @param currentAngle current angle of the painter
+     * @param time for animation
+     * @param painter painter object
+     * @return the new current angle of 'painter'
+     */
+    public static double drawFish(double currentAngle, int time, PainterAPI painter) {
+        // draws fish
+        // painter.liftPen();
+        // painter.moveTo(placeholder, placeholder);
+        // painter.lowerPen();
+        // draws stuff here
         return 0.0;
     }
 
-    // TODO: implement this method
-    public static double drawBubbles() {
-        // to keep track of 'currentAngle'
+    /**
+     *
+     * @param currentAngle current angle of the painter
+     * @param time for animation
+     * @param painter painter object
+     * @return the new current angle of 'painter'
+     */
+    public static double drawBubbles(double currentAngle, int time, PainterAPI painter) {
+        // draws fish
+        // painter.liftPen();
+        // painter.moveTo(0, 0);
+        // painter.lowerPen();
+        // draws stuff here
+        return 0.0;
+    }
+
+    /**
+     *
+     * @param currentAngle current angle of the 'painter'
+     * @param time for animation
+     * @param painter painter object
+     * @return the new current angle of 'painter'
+     */
+    public static double drawStarFish(double currentAngle, int time, PainterAPI painter) {
+        // draws a starfish
+        // painter.liftPen();
+        // painter.moveTo(placeholder, placeholder);
+        // painter.lowerPen();
+        // draws stuff here
         return 0.0;
     }
 }

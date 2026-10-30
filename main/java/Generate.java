@@ -5,7 +5,7 @@ public class Generate {
 
     /**
      * @param initial starting 'String' which rules are then applied to
-     * @param time sets the amount of iterations (steps) applied to initial
+     * @param time    sets the amount of iterations (steps) applied to initial
      * @return result of rules applied to {@code initial} after {@code time} iterations
      */
     public static String generatePlant(String initial, int time) {
@@ -26,24 +26,34 @@ public class Generate {
         return initial;
     }
 
-    /* TODO: implement method
-     *
+    /**
+     * @param initial starting 'String' which rules are then applied to
+     * @param time sets the amount of iterations (steps) appied to {@code initial}
+     * @return result of rules applied to {@code initial} after {@code time} iterations
      */
-    public static String generateRocks() {
+    public static String generateRocks(String initial, int time) {
+        // creates rocks using magic
         return "testrocks";
     }
 
-    /* TODO: implement method and determine return type
-     *   'String' return type is tentative
+    /**
+     * @param initial starting 'String' which rules are then applied to
+     * @param time    sets the amount of iterations (steps) applied to initial
+     * @return result of rules applied to {@code initial} after {@code time} iterations
      */
-    public static String generateFish() {
+    public static String generateFish(String initial, int time) {
+        // creates fish using magic
         return "testfish";
     }
 
-    /* TODO: implement method and determine return type
-     *   'String' return type is tentative
+    /**
+     * @param initial starting 'String' which rules are then applied to
+     * @param time    sets the amount of iterations (steps) applied to initial
+     * @return result of rules applied to {@code initial} after {@code time} iterations
      */
-    public static String generateBubbles() {
+    public static String generateBubbles(String initial, int time) {
+        // creates bubbles using magic
+
         return "testbubbles";
     }
 }
