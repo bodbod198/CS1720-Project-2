@@ -28,7 +28,7 @@ public class Generate {
 
     /**
      * @param initial starting 'String' which rules are then applied to
-     * @param time sets the amount of iterations (steps) appied to {@code initial}
+     * @param time sets the amount of iterations (steps) applied to {@code initial}
      * @return result of rules applied to {@code initial} after {@code time} iterations
      */
     public static String generateRocks(String initial, int time) {
