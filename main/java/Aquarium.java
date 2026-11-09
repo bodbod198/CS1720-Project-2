@@ -2,42 +2,29 @@ import edu.cymbal.graphics.CanvasAPI;
 import edu.cymbal.graphics.Graphics;
 import edu.cymbal.graphics.PainterAPI;
 
+import java.awt.Color;
 
-/* FIXME: Add features if there is time
-        - make Javadoc comments look good
- *      - add randomness to plants, fish, bubbles
- *          use 'Math.random' to give a chance for a different operation to apply when
- *          generating plants/fish/bubbles - i guess its pseudo-random, not random
- *      - grow the aquarium over time
- *          keep track of time elapsed, and use that to slowly 'grow' the aquarium
- *      - animation
- *          redraw plants, fish, bubbles to appear to move
- *              - plants will 'sway' slightly
- *              - fish go across the screen, hit the edge, and appear on the other side
- *              - bubbles rise up from the bottom, and 'sway' slightly (sine wave maybe?)
- *      - allow different L-System 'grammar' to be used, aka make 'Draw' methods not use
- *        'hardcoded' rules
- */
 
 public class Aquarium {
-    public static void main(String[] args) {
-        // initialize requirements
-        CanvasAPI canvas = Graphics.createCanvas(800, 600, "test");
-        PainterAPI painter = canvas.getPainter();
+    public static int windowX = 1280;
+    public static int windowY = 720;
+    private static final CanvasAPI canvas = Graphics.createCanvas(windowX, windowY, "Bodie's Aquarium");
+    // painter starts at 1/2 * windowX, 1/2 * windowY
+    public static PainterAPI painter = Aquarium.canvas.getPainter();
+    public static void initializePainter() {
         painter.setSpeed(0);
-        // orients new painter to +y axis
+        // orients new painter to +y-axis
         painter.turnLeft(90);
+    }
 
-        // placeholder vars for demo
-        // TODO: move placeholder variables
-        double currentAngle = 0;
-        int xPos1 = 0;
-        int yPos1 = -50;
-        double branchLength = 4;
-        int time = 5;
-
-        // draws demo plant
-        Draw.drawPlant(currentAngle, branchLength, time, xPos1, yPos1, painter);
+    public static void main(String[] args) {
+        canvas.setBackgroundColor(new Color(118, 182, 196));
+        initializePainter();
+        //long startTime = System.nanoTime();
+        Draw.drawPlant(5);
+        //long currentTime = System.nanoTime();
+        //double dtime =  (currentTime - startTime) / 1_000_000_000.0;
+        //System.out.println(dtime);
 
     }
 }
