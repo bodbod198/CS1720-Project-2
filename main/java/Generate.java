@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Generate {
 
     public static String[] generatePlants(int iterations) {
@@ -17,32 +15,6 @@ public class Generate {
         }
         return plants;
     }
-
-//    public static String generatePlant(int time) {
-//        // x -> a, f -> b
-//        // b gets drawn
-//        String initial = "-x";
-//        if ((int) (Math.random() * 2) == 0) {
-//            initial = "-x";
-//        } else {
-//            initial = "+x";
-//        }
-//        for (int i = 0; i < time; i++) {
-//            StringBuilder newInstructions = new StringBuilder();
-//            for (char character : initial.toCharArray()) {
-//                if (character == 'x') {
-//                    newInstructions.append("f+[[x]-x]-f[-fx]+x");
-//                } else if (character == 'f') {
-//                    newInstructions.append("ff");
-//                } else {
-//                    newInstructions.append(character);
-//                }
-//            }
-//            initial = newInstructions.toString();
-//        }
-//        return initial;
-//    }
-
     private static String generatePlant1(int iterations) {
         // a tall kelp-ish plant
         // a will draw, x is placeholder
@@ -64,17 +36,6 @@ public class Generate {
         }
         return initial;
     }
-
-<<<<<<< Updated upstream
-    /**
-     * @param initial starting 'String' which rules are then applied to
-     * @param time sets the amount of iterations (steps) appied to {@code initial}
-     * @return result of rules applied to {@code initial} after {@code time} iterations
-     */
-    public static String generateRocks(String initial, int time) {
-        // creates rocks using magic
-        return "testrocks";
-=======
     private static String generatePlant2(int iterations) {
         // bushy type of plant
         // b is draw
@@ -93,7 +54,6 @@ public class Generate {
             initial = newInstructions.toString();
         }
         return initial;
->>>>>>> Stashed changes
     }
 
     private static String generatePlant3(int iterations) {
